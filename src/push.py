@@ -25,4 +25,5 @@ def push_to_csv_zip(df: pd.DataFrame, file_path: Path) -> None:
             arcname=file_path.name,
             compress_type=zipfile.ZIP_DEFLATED
         )
+
     file_path.unlink()
