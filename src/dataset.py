@@ -9,7 +9,7 @@ Created on Fri Mar 11 23:51:24 2022
 
 import pandas as pd
 
-from config import DATA_DIR, FILE_NAME, FILE_NAMES
+from config import DATA_DIR, FILE_NAME
 from push import push_to_csv_zip
 from transform import insert_desc_and_swap_cols
 
@@ -19,18 +19,10 @@ def main() -> None:
 
     pd.concat(
         [
-            pd.read_csv(
-                DATA_DIR.joinpath(name),
-                index_col=0
-            ).pipe(
-                insert_desc_and_swap_cols
-            )
-            for name in FILE_NAMES
+            pd.read_csv(name, index_col=0).pipe(insert_desc_and_swap_cols)
+            for name in DATA_DIR.iterdir()
         ]
-    ).pipe(
-        push_to_csv_zip,
-        file_path
-    )
+    ).pipe(push_to_csv_zip, file_path)
 
 
 if __name__ == '__main__':
