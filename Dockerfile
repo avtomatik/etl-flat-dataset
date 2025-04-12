@@ -12,7 +12,7 @@ RUN python3 -m venv venv
 
 # Upgrade pip and install dependencies into the virtual environment
 RUN ./venv/bin/pip install --upgrade pip
-RUN ./venv/bin/pip install -r requirements.txt
+RUN ./venv/bin/pip install -r requirements.txt --no-cache-dir
 
 # Set the virtual environment's bin directory to the PATH
 ENV PATH="/app/venv/bin:$PATH"
