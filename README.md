@@ -17,11 +17,12 @@ source venv/bin/activate
 
 ### Install Dependencies
 ```bash
+python3 -m pip install --upgrade pip
 pip install -r requirements.txt --no-cache-dir
 ```
 
 ## Run the Dataset Script
 
 ```bash
-python3 src/dataset.py
+python3 -m etl_flat_dataset
 ```
